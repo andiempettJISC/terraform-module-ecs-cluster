@@ -1,0 +1,9 @@
+#cloud-config
+write_files:
+  - path: /etc/ecs/ecs.config
+    content: |
+      ECS_CLUSTER=${ECS_CLUSTER}
+      ECS_RESERVED_MEMORY=${ECS_RESERVED_MEMORY}
+      ECS_IMAGE_PULL_BEHAVIOR=prefer-cached
+      ECS_ENABLE_SPOT_INSTANCE_DRAINING=true
+      ECS_INSTANCE_ATTRIBUTES=${ECS_INSTANCE_ATTRIBUTES}
