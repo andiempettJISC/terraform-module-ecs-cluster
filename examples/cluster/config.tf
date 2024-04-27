@@ -23,7 +23,7 @@ provider "aws" {
     tags = {
       Environment = terraform.workspace
       Application = basename(abspath("${path.root}/"))
-      Owner       = "example-team"
+      Owner       = local.owner
       ManagedBy   = "terraform"
     }
   }

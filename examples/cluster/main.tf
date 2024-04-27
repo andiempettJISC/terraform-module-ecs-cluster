@@ -1,7 +1,5 @@
 # Add Terraform resources and modules here
 
-variable "region" {}
-
 locals {
   owner              = "example"
   app                = "shared"
@@ -27,6 +25,7 @@ module "vpc" {
 
 }
 
+# Create an ECS cluster that supports both fargate and instance tasks. Uses mixed instance types and supports cloudmap.
 module "ecs_cluster" {
   source          = "../../."
   instance_type   = "t3.small"
@@ -43,6 +42,7 @@ module "ecs_cluster" {
   enable_cloudmap   = true
 }
 
+# Create an ECS cluster that supports both fargate and instance tasks. supports ARM64 instance architecture and supports cloudmap.
 # module "ecs_cluster_arm" {
 #   source          = "../../."
 #   instance_type   = "t4g.small"
@@ -54,4 +54,14 @@ module "ecs_cluster" {
 #   instance_max_size = 5
 #   enable_cloudmap = true
 #   architecture = "ARM"
+# }
+
+# Create an ECS cluster only uses fargate to run tasks. No instances are ran because instance sizes are 0.
+# module "ecs_cluster_fargate" {
+#   source          = "../../."
+#   vpc_id          = local.vpc_id
+#   private_subnets = local.private_subnet_ids
+#   environment     = local.env
+#   owner           = local.owner
+#   enable_cloudmap   = true
 # }

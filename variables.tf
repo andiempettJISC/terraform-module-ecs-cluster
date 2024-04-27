@@ -24,10 +24,12 @@ variable "additional_instances" {
 
 variable "instance_min_size" {
   type = number
+  default = 0
 }
 
 variable "instance_max_size" {
   type = number
+  default = 0
 }
 
 variable "enable_cloudmap" {

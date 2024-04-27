@@ -22,6 +22,7 @@ then run the following:
 
     cd examples/cluster
     export AWS_REGION=eu-west-1
+    export TF_WORKSPACE=dev
     terraform init
 
 Then plan...
